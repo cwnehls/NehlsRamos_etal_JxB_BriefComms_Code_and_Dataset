@@ -2,7 +2,7 @@
 
 
 # Kruskal Wallis Analyses for Tribes with 5 or More Data Points
-# Date of last edit: 12/11/2025
+# Date of last edit: 16/01/2026
 # Description: This code is meant to be ran altogether at once. This code is made to analyse 
   # the variation of Rubisco dark inhibition across flowering plant tribes. Optional 
   # tests for normality and variation are included. This code uses the Kruskal-Wallis paired  
@@ -116,9 +116,7 @@ ggplot(data = subset(df_5plus, !is.na(Tribe)), aes(x = Tribe, y = Dark_Inhibitio
   geom_text(data = df_labels, aes(x = Tribe, y = cld_y, label = Letter),
             size = 5, vjust = 0) +
   scale_color_viridis_d(option = "turbo") +
-  #geom_text(data = df_labels,
-  # aes(x = Tribe, y = sd_y, label = paste0("SD = ", round(SD, 2))),
-  #size = 3.5, vjust = 0, color = "gray30") +
+  scale_y_continuous(labels = scales::percent) +
   theme_minimal() +
   theme(axis.text.y = element_text(size = 12), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 12, face = "italic"), 
         axis.title = element_text(size = 16, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 12),
@@ -129,3 +127,4 @@ ggplot(data = subset(df_5plus, !is.na(Tribe)), aes(x = Tribe, y = Dark_Inhibitio
 
 
 # ---- End ----
+
