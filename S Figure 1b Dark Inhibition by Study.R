@@ -40,12 +40,13 @@ ggplot() +
   geom_hline(yintercept = c(0.18, 0.44, 0.77), 
              linetype = "dashed", color = "grey70") +
   geom_jitter(data = df_filtered, aes(x = Lit_Source, y = Dark_Inhibition, color = Order),
-              width = 0.2, alpha = 0.6) +
+              width = 0.2, alpha = 0.6, size = 2.5) +
   scale_color_viridis_d(option = "turbo") +
   theme_minimal() +
-  theme(axis.text.y = element_text(size = 12), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 10), 
-        axis.title = element_text(size = 16, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 12),
-        legend.title = element_text(size = 12, face = "bold"), plot.title = element_text(size = 16.5, face = "bold")) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(axis.text.y = element_text(size = 14), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 12), 
+        axis.title = element_text(size = 18, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 14),
+        legend.title = element_text(size = 14, face = "bold"), plot.title = element_text(size = 18, face = "bold")) +
   labs(title = "",
        x = "Study", y = "Dark Inhibition")
 
