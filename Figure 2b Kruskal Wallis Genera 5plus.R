@@ -116,6 +116,7 @@ ggplot(data = subset(df_5plus, !is.na(Genus)), aes(x = Genus, y = Dark_Inhibitio
   geom_text(data = df_labels, aes(x = Genus, y = cld_y, label = Letter),
             size = 5, vjust = 0) +
   scale_color_viridis_d(option = "turbo") +
+  scale_y_continuous(labels = scales::percent) +
   theme_minimal() +
   theme(axis.text.y = element_text(size = 12), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 12, face = "italic"), 
         axis.title = element_text(size = 16, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 12),
@@ -126,3 +127,4 @@ ggplot(data = subset(df_5plus, !is.na(Genus)), aes(x = Genus, y = Dark_Inhibitio
 
 
 # ---- End ----
+
