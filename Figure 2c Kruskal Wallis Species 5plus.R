@@ -121,13 +121,13 @@ ggplot(data = subset(df_5plus, !is.na(Species)), aes(x = Species, y = Dark_Inhib
   geom_boxplot(outlier.shape = NA, fill = "white") +  # Don't plot outliers twice
   geom_jitter(width = 0.15, height = 0, alpha = 0.6, aes(x = Species, y = Dark_Inhibition, color = Order)) +  # Show individual points
   geom_text(data = df_labels, aes(x = Species, y = cld_y, label = Letter),
-            size = 5, vjust = 0) +
+            size = 6, vjust = 0) +
   scale_color_viridis_d(option = "turbo") +
   scale_y_continuous(labels = scales::percent) +
   theme_minimal() +
-  theme(axis.text.y = element_text(size = 12), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 12, face = "italic"), 
-        axis.title = element_text(size = 16, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 12),
-        legend.title = element_text(size = 12, face = "bold"), plot.title = element_text(size = 16.5, face = "bold")) +
+  theme(axis.text.y = element_text(size = 14), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 14, face = "italic"), 
+        axis.title = element_text(size = 18, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 14),
+        legend.title = element_text(size = 14, face = "bold"), plot.title = element_text(size = 18, face = "bold")) +
   scale_x_discrete(labels = Species_Labels) +
   labs(title = "",
        x = "Species", y = "Dark Inhibition") +
@@ -135,4 +135,5 @@ ggplot(data = subset(df_5plus, !is.na(Species)), aes(x = Species, y = Dark_Inhib
 
 
 # ---- End ----
+
 
