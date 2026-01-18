@@ -156,21 +156,23 @@ df_filtered$Tribe <- factor(df_filtered$Tribe, levels = Tribe_order)
 ggplot() +
   geom_hline(yintercept = c(0.18, 0.44, 0.77), 
              linetype = "dashed", color = "grey70") +
-  geom_jitter(data = df_filtered, aes(x = Genus, y = Dark_Inhibition, color = Tribe), width = 0.15, alpha = 0.6) +
+  geom_jitter(data = df_filtered, size = 2, aes(x = Genus, y = Dark_Inhibition, color = Tribe), width = 0.15, alpha = 0.6) +
   geom_boxplot(data = df_box, aes(x = Genus, y = Dark_Inhibition), 
                outlier.shape = NA, fill = "transparent") +  # Don't plot outliers twice
   geom_crossbar(data = df_small,
                 aes(x = Genus, y = mean_value, ymin = mean_value, ymax = mean_value),
                 width = 0.4, color = "black", fatten = 2) + # Show individual points
   geom_text(data = df_labels, aes(x = Genus, y = cld_y, label = Letter),
-            size = 5, vjust = 0, na.rm = TRUE) +
+            size = 6, vjust = 0, na.rm = TRUE) +
   scale_color_viridis_d(option = "turbo") +
+  scale_y_continuous(labels = scales::percent) +
   theme_minimal() +
-  theme(axis.text.y = element_text(size = 12), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 12, face = "italic"), 
-        axis.title = element_text(size = 16, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 11, face = "italic"),
-        legend.title = element_text(size = 12, face = "bold"), plot.title = element_text(size = 16.5, face = "bold")) +
+  theme(axis.text.y = element_text(size = 16), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 14, face = "italic"), 
+        axis.title = element_text(size = 22, face = "bold"), legend.position = "bottom", legend.text = element_text(size = 13, face = "italic"),
+        legend.title = element_text(size = 16, face = "bold"), plot.title = element_text(size = 18, face = "bold")) +
   labs(title = "",
        x = "Genus", y = "Dark Inhibition")
 
 
 # ---- End ----
+
