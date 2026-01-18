@@ -2,7 +2,7 @@
 
 
 # Kruskal Wallis for Variance by Order
-# Date of last edit: 12/11/2025
+# Date of last edit: 18/01/2026
 # Description: This code is meant to be ran altogther at once. This code is made to analyse 
   # the variation of Rubisco dark inhibition across flowering plant orders. Optional 
   # tests for normality and variation are included. This code uses the Kruskal-Wallis paired  
@@ -147,7 +147,7 @@ df_small$Order   <- factor(df_small$Order, levels = original_order)
 ggplot() +
   geom_hline(yintercept = c(0.18, 0.44, 0.77), 
              linetype = "dashed", color = "grey70") +
-  geom_jitter(data = df_colored, width = 0.175, alpha = 0.6, aes(x = Order, y = avg_value, color = threshold_group)) +  # Show individual points
+  geom_jitter(data = df_colored, width = 0.175, alpha = 0.6, size = 2.5, aes(x = Order, y = avg_value, color = threshold_group)) +  # Show individual points
   geom_boxplot(data = df_box, aes(x = Order, y = avg_value), 
                outlier.shape = NA, fill = "transparent") +  # Don't plot outliers twice
   geom_crossbar(data = df_small,
@@ -159,15 +159,16 @@ ggplot() +
     "High (44% - 77%)" = "#32a354",
     "Very High (>77%)" = "#3b4bcd")) +  
   geom_text(data = df_letters, aes(x = Order, y = y_pos, label = Letter),
-            size = 5, vjust = 0, na.rm = TRUE) +
+            size = 6, vjust = 0, na.rm = TRUE) +
   theme_minimal() +
-  theme(axis.text.y = element_text(size = 12), 
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 11), 
-        axis.title = element_text(size = 16, face = "bold"),
-        legend.title = element_text(size = 11, face = "bold"),
-        legend.text  = element_text(size = 10.5), 
+  scale_y_continuous(labels = scales::percent) +
+  theme(axis.text.y = element_text(size = 14), 
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 14), 
+        axis.title = element_text(size = 22, face = "bold"),
+        legend.title = element_text(size = 16, face = "bold"),
+        legend.text  = element_text(size = 13), 
         panel.grid.minor.y = element_blank(), legend.position ="bottom") +
-  guides(color = guide_legend(override.aes = list(shape = 15, size = 4), reverse = TRUE)) +
+  guides(color = guide_legend(override.aes = list(shape = 15, size = 5), reverse = TRUE)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), legend.position="bottom") +
   labs(title = "",
        x = "Order", y = "Dark Inhibition")
